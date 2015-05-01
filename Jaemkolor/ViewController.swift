@@ -45,6 +45,7 @@ class ViewController: UIViewController {
         self.createButton("All Red", withAction: "buttonSetAllRed")
         self.createButton("All Green", withAction: "buttonSetAllGreen")
         self.createButton("All Blue", withAction: "buttonSetAllBlue")
+        self.createButton("Pattern 1", withAction: "buttonSetPattern1")
     }
     
     
@@ -117,6 +118,18 @@ class ViewController: UIViewController {
             colors.append(UInt8(arc4random_uniform(256)))
             colors.append(UInt8(arc4random_uniform(256)))
             colors.append(UInt8(arc4random_uniform(256)))
+        }
+        send(colors)
+    }
+    
+    
+    func buttonSetPattern1() {
+        println("Setting pattern 1")
+        var colors:[UInt8] = [0]
+        for i in 0...10 {
+            colors.append(UInt8((1-i%2)*100))
+            colors.append(UInt8(0))
+            colors.append(UInt8(i%2*100))
         }
         send(colors)
     }
